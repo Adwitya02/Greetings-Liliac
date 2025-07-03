@@ -19,4 +19,13 @@ A dreamy, lilac-themed two-screen website with floating hearts and sparkles, per
    - `heart.svg` — pastel heart SVG
    - `sparkle.svg` — pastel sparkle SVG
 3. Open `index.html` in your browser.
-4. Personalize the greeting by adding `?name=YourName` to the URL, for example:
+4. Personalize the greeting by adding `?name=YourName` to the URL, for example: "index.html?name=Adwitya"
+
+## File Structure
+
+├── index.html
+├── styles.css
+├── script.js
+├── pixel-cat.gif (or pixel-cat.png)
+├── heart.svg
+└── sparkle.svg
