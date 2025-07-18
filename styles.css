@@ -1,16 +1,27 @@
+:root {
+  --bg-gradient: linear-gradient(135deg, #e6e6fa 0%, #d8bfd8 100%);
+  --primary: #b19cd9;
+  --accent: #6c3483;
+  --button-bg: #b19cd9;
+  --button-hover: #a084ca;
+}
+
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #e6e6fa 0%, #d8bfd8 100%);
+  background: var(--bg-gradient);
+  color: var(--accent);
   overflow: hidden;
+  /* Custom cursor (sparkle) */
+  cursor: url('sparkle.svg') 12 12, auto;
 }
 
 .cursive {
   font-family: 'Pacifico', cursive;
   font-size: 2.8rem;
-  color: #6c3483;
+  color: var(--accent);
   margin-bottom: 24px;
 }
 
@@ -22,7 +33,7 @@ body, html {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: #4b0082;
+  color: var(--accent);
   text-align: center;
 }
 
@@ -31,7 +42,7 @@ body, html {
   width: 100%;
   height: 100%;
   top: 0; left: 0;
-  background: linear-gradient(135deg, #e6e6fa 0%, #d8bfd8 100%);
+  background: var(--bg-gradient);
   z-index: 0;
   overflow: hidden;
 }
@@ -41,8 +52,28 @@ body, html {
   z-index: 1;
 }
 
+.theme-toggle {
+  margin-bottom: 20px;
+}
+
+.theme-toggle button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  padding: 8px 18px;
+  margin: 0 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: 0 2px 8px rgba(177, 156, 217, 0.18);
+}
+.theme-toggle button:hover {
+  background: var(--button-hover);
+}
+
 .yes-button {
-  background: #b19cd9;
+  background: var(--button-bg);
   border: none;
   border-radius: 24px;
   padding: 14px 36px;
@@ -53,9 +84,8 @@ body, html {
   margin-top: 20px;
   transition: background 0.3s;
 }
-
 .yes-button:hover {
-  background: #a084ca;
+  background: var(--button-hover);
 }
 
 .pixel-cat {
@@ -66,7 +96,7 @@ body, html {
 
 h2 {
   font-size: 2rem;
-  color: #7d5fff;
+  color: var(--accent);
   margin-top: 0;
 }
 
@@ -94,6 +124,34 @@ h2 {
 
 .floating-heart {
   background: url('heart.svg') no-repeat center/contain;
+}
+
+.floating-sparkle {
+  background: url('sparkle.svg') no-repeat center/contain;
+}
+
+/* Trailing sparkle effect */
+.trail-sparkle {
+  position: fixed;
+  pointer-events: none;
+  width: 20px;
+  height: 20px;
+  background: url('sparkle.svg') no-repeat center/contain;
+  opacity: 0.8;
+  z-index: 9999;
+  animation: sparkle-fade 0.7s linear forwards;
+}
+
+@keyframes sparkle-fade {
+  0% { opacity: 1; transform: scale(1);}
+  100% { opacity: 0; transform: scale(1.5);}
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .cursive { font-size: 2rem; }
+  .pixel-cat { width: 100px; }
+  .yes-button, .theme-toggle button { font-size: 1rem; padding: 10px 18px; }
 }
 
 .floating-sparkle {
