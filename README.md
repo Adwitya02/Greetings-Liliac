@@ -4,12 +4,10 @@ A dreamy, lilac-themed two-screen website with floating hearts and sparkles, per
 
 ## Features
 
-- Soft lilac gradient background with gentle floating hearts and sparkles
+- Soft lilac gradient background( 2 more colours there) with gentle floating hearts and sparkles
 - Personalized greeting (“Hello, [Name]?”) using the name from the URL (e.g., `?name=Riya`)
 - Handwritten or cursive font for the main greeting
-- Pastel, rounded “Yes” button to transition screens
 - Second screen with a cute pixel art cat giving a bouquet of flowers and the message “Just for you, [Name]!”
-- Warm, cozy, magical visual style
 
 ## Getting Started
 
