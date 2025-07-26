@@ -1,37 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Flowers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div id="screen1" class="screen">
-    <div class="background"></div>
-    <div class="content">
-      <div class="theme-toggle">
-        <button onclick="setTheme('lilac')">Lilac</button>
-        <button onclick="setTheme('rose')">Rose</button>
-        <button onclick="setTheme('sunflower')">Sunflower</button>
+  <main>
+    <section id="screen1" class="screen" aria-label="Main greeting screen">
+      <div class="background"></div>
+      <div class="content">
+        <div class="theme-toggle" aria-label="Choose a theme">
+          <button type="button" onclick="setTheme('lilac')">Lilac</button>
+          <button type="button" onclick="setTheme('rose')">Rose</button>
+          <button type="button" onclick="setTheme('sunflower')">Sunflower</button>
+        </div>
+        <h1 id="greeting" class="cursive">Hello, ?</h1>
+        <button id="yesButton" class="yes-button" type="button">Yes</button>
+        <button id="shareBtn" class="yes-button" type="button" style="margin-top:12px;">Share</button>
       </div>
-      <h1 id="greeting" class="cursive">Hello, ?</h1>
-      <button id="yesButton" class="yes-button">Yes</button>
-    </div>
-  </div>
-  <div id="screen2" class="screen" style="display:none;">
-    <div class="background"></div>
-    <div class="content">
-      <div class="theme-toggle">
-        <button onclick="setTheme('lilac')">Lilac</button>
-        <button onclick="setTheme('rose')">Rose</button>
-        <button onclick="setTheme('sunflower')">Sunflower</button>
+    </section>
+
+    <section id="screen2" class="screen" style="display:none" aria-label="Gift screen">
+      <div class="background"></div>
+      <div class="content">
+        <div class="theme-toggle" aria-label="Choose a theme">
+          <button type="button" onclick="setTheme('lilac')">Lilac</button>
+          <button type="button" onclick="setTheme('rose')">Rose</button>
+          <button type="button" onclick="setTheme('sunflower')">Sunflower</button>
+        </div>
+        <img src="pixel-cat.gif" alt="Pixel Cat" class="pixel-cat" draggable="false" />
+        <h2 id="giftText">Just for you, !</h2>
+        <button id="shareBtnScreen2" class="yes-button" type="button" style="margin-top:12px; display:none;">Share</button>
       </div>
-      <img src="pixel-cat.gif" alt="Pixel Cat" class="pixel-cat">
-      <h2 id="giftText">Just for you, !</h2>
+    </section>
+
+    <!-- Name input modal -->
+    <div id="shareModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="shareModalLabel" aria-modal="true">
+      <div class="modal-content">
+        <h3 id="shareModalLabel">Who are we sending the link to?</h3>
+        <input
+          type="text"
+          id="modalNameInput"
+          placeholder="Enter name"
+          autocomplete="off"
+          aria-label="Name to personalize sharing link"
+          spellcheck="false"
+        />
+        <div class="modal-buttons">
+          <button id="modalShareBtn" type="button" class="yes-button">Share</button>
+          <button id="modalCancelBtn" type="button" class="modal-cancel">Cancel</button>
+        </div>
+      </div>
     </div>
-  </div>
+  </main>
   <script src="script.js"></script>
 </body>
 </html>
