@@ -6,7 +6,8 @@
   --button-hover: #a084ca;
 }
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -14,7 +15,6 @@ body, html {
   background: var(--bg-gradient);
   color: var(--accent);
   overflow: hidden;
-  /* Custom cursor (sparkle) */
   cursor: url('sparkle.svg') 12 12, auto;
 }
 
@@ -41,7 +41,8 @@ body, html {
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   background: var(--bg-gradient);
   z-index: 0;
   overflow: hidden;
@@ -50,6 +51,8 @@ body, html {
 .content {
   position: relative;
   z-index: 1;
+  max-width: 320px;
+  width: 90vw;
 }
 
 .theme-toggle {
@@ -67,8 +70,11 @@ body, html {
   cursor: pointer;
   transition: background 0.3s;
   box-shadow: 0 2px 8px rgba(177, 156, 217, 0.18);
+  outline: none;
 }
-.theme-toggle button:hover {
+
+.theme-toggle button:hover,
+.theme-toggle button:focus {
   background: var(--button-hover);
 }
 
@@ -83,8 +89,12 @@ body, html {
   box-shadow: 0 4px 16px rgba(177, 156, 217, 0.3);
   margin-top: 20px;
   transition: background 0.3s;
+  outline: none;
+  user-select: none;
 }
-.yes-button:hover {
+
+.yes-button:hover,
+.yes-button:focus {
   background: var(--button-hover);
 }
 
@@ -92,6 +102,8 @@ body, html {
   width: 160px;
   margin-bottom: 20px;
   image-rendering: pixelated;
+  user-select: none;
+  pointer-events: none;
 }
 
 h2 {
@@ -112,7 +124,8 @@ h2 {
   }
 }
 
-.floating-heart, .floating-sparkle {
+.floating-heart,
+.floating-sparkle {
   position: absolute;
   bottom: 0;
   width: 24px;
@@ -143,17 +156,112 @@ h2 {
 }
 
 @keyframes sparkle-fade {
-  0% { opacity: 1; transform: scale(1);}
-  100% { opacity: 0; transform: scale(1.5);}
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
 }
 
-/* Responsive */
+/* Modal backdrop */
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+/* Show modal */
+.modal.show {
+  display: flex;
+}
+
+/* Modal content box */
+.modal-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px 32px;
+  max-width: 320px;
+  width: 90vw;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  color: #333;
+  text-align: center;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-family: 'Pacifico', cursive;
+  font-size: 1.8rem;
+  color: var(--accent);
+}
+
+/* Modal input */
+#modalNameInput {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1.1rem;
+  border-radius: 24px;
+  border: 2px solid var(--primary);
+  outline: none;
+  margin-bottom: 24px;
+  box-sizing: border-box;
+  font-family: inherit;
+  color: var(--accent);
+  text-align: center;
+  transition: border-color 0.3s;
+}
+
+#modalNameInput:focus {
+  border-color: var(--button-hover);
+}
+
+/* Modal buttons container */
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* Modal share button uses same yes-button style */
+#modalShareBtn {
+  flex: 1;
+}
+
+/* Modal cancel button style */
+.modal-cancel {
+  flex: 1;
+  background: #ccc;
+  border: none;
+  border-radius: 24px;
+  padding: 14px 0;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: #333;
+  transition: background 0.3s;
+}
+.modal-cancel:hover,
+.modal-cancel:focus {
+  background: #999;
+}
+
+/* Responsive styling */
 @media (max-width: 600px) {
-  .cursive { font-size: 2rem; }
-  .pixel-cat { width: 100px; }
-  .yes-button, .theme-toggle button { font-size: 1rem; padding: 10px 18px; }
-}
-
-.floating-sparkle {
-  background: url('sparkle.svg') no-repeat center/contain;
+  .cursive {
+    font-size: 2rem;
+  }
+  .pixel-cat {
+    width: 100px;
+  }
+  .yes-button,
+  .theme-toggle button {
+    font-size: 1rem;
+    padding: 10px 18px;
+  }
 }
